@@ -1,5 +1,5 @@
 # machineLearning
-Programação de modelos de **_Machine Learning_** em *Python*
+Programação de modelos de **_Machine Learning_** em *Python*.
 
 **_Leonardo Damasio_**
 
