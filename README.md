@@ -11,8 +11,6 @@ Estes são alguns dos modelos de **_Machine Learning_** que aprendi a realizar a
 
 Os modelos estão divididos em:
 
-`0 - Úteis`
-
 `1 - Aprendizagem Supervisionada`
 
   `1.1 - Classificação`
