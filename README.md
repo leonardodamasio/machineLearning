@@ -21,7 +21,7 @@ Os modelos estão divididos em:
 
 `3 - Aprendizagem por Reforço`
 
-`4 - Redes Neurais`
+`4 - Redes Neurais Artificiais`
 
 Dentro de cada diretório, você também encontrará as bases utilizadas para realizar cada modelo. 
 
