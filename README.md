@@ -19,6 +19,10 @@ Os modelos estão divididos em:
   
 `2 - Aprendizagem Não Supervisionada`
 
+  `2.1 - Clustering`
+  
+  `2.2 - Associação`
+
 `3 - Aprendizagem por Reforço`
 
 `4 - Redes Neurais Artificiais`
