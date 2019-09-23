@@ -1,0 +1,21 @@
+Importance|Variable
+11.05% | checking_status
+8.53% | duration
+6.21% | credit_history
+5.85% | purpose
+8.08% | credit_amount
+4.62% | savings_status
+5.37% | employment
+5.03% | installment_commitment
+4.51% | personal_status
+2.55% | other_parties
+5.22% | residence_since
+4.95% | property_magnitude
+6.47% | age
+3.58% | other_payment_plans
+3.72% | housing
+3.52% | existing_credits
+4.25% | job
+2.5% | num_dependents
+3.19% | own_telephone
+0.8% | foreign_worker
