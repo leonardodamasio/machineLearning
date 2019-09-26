@@ -41,4 +41,4 @@ leoleonardo1996@hotmail.com
 
 (11) 98783-3949
 
-![](https://www.pyimagesearch.com/wp-content/uploads/2019/01/python_ml_header.png)
+![](https://www.callcentermagazine.net/wp-content/uploads/sites/3/2018/05/machine-learning-Call-Center-Magazine.jpg)
