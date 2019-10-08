@@ -1,10 +1,10 @@
 
-# Portfólio
+# Portfolio
 
-## Machine Learning / Deep Learning
+# Machine Learning / Deep Learning
 
-### Autor: Leonardo Vinícius Damasio da Silva | Cientista de Dados
-### Data: 07/10/2019
+# Author: Leonardo Vinícius Damasio da Silva | Cientista de Dados
+# Date: 07/10/2019
 
 
 print("""\
@@ -21,7 +21,7 @@ print("""\
 """)
 
 
-### Tools
+# Tools
 
 print("\nImporting tools")
 
@@ -32,6 +32,7 @@ import matplotlib.pyplot as plt # MatPlotLib
 import operator # Operator
 import os # Operating System
 import pickle # Pickle
+import webbrowser # Web Browser
 
 # Data Wrangling Tools
 from sklearn.model_selection import train_test_split # Train / Test Split
@@ -48,18 +49,18 @@ from sklearn.ensemble import ExtraTreesClassifier # Variable Importances
 print("Successfully imported tools")
 
 
-### Results Folder
+# Results Folder
 
 print("\nCreating the results folder")
 
 try:
-    os.mkdir('results')
+    os.mkdir("results")
     print ("Successfully created the directory <results>.")
 except OSError:
     print ("Directory <results> already exists.")
 
 
-### Classifying Algorithms (Choose One)
+# Classifying Algorithms (Choose One)
 
 random = 32475
 possible = range(7)
@@ -98,12 +99,12 @@ if choice == 6: print("Deep Learning Multilayer Perceptron Neural Networks\n")
 
 
 
-### Function: Training Model
+# Function: Training Model
 
 def train_model():
 
 
-	### Model Instance
+	# Model Instance
 
 	if choice == 0:
 	    from sklearn.naive_bayes import GaussianNB 
@@ -130,7 +131,7 @@ def train_model():
 	elif choice == 5:
 	    from xgboost import XGBClassifier 
 	    model = XGBClassifier(base_score=0.5, 
-	                           booster='gbtree', 
+	                           booster="gbtree", 
 	                           colsample_bylevel=1,
 	                           colsample_bynode=1,
 	                           colsample_bytree=0.8,
@@ -143,7 +144,7 @@ def train_model():
 	                           n_estimators=1000,
 	                           n_jobs=1,
 	                           nthread=None, 
-	                           objective='binary:logistic', 
+	                           objective="binary:logistic", 
 	                           random_state=random,
 	                           reg_alpha=0, 
 	                           reg_lambda=1, 
@@ -172,7 +173,7 @@ def train_model():
 	print("Success")
 
 
-	### Datasets Import
+	# Datasets Import
 
 	print("\nImporting dataset")
 
@@ -181,7 +182,7 @@ def train_model():
 	print("Dataset Shape:", dataset.shape)
 
 
-	### X / Y Split
+	# X / Y Split
     
 	x = dataset.iloc[:,0:20]
 	labels = [i for i in x.columns]
@@ -201,7 +202,7 @@ def train_model():
 	print("\nX categorical to numerical\n")
 	print(pd.DataFrame(x).head())
 
-    
+   
 	y = dataset.iloc[:,20]
 	print("\n***** Y *****\n")
 	print(pd.DataFrame(y).head())
@@ -214,7 +215,7 @@ def train_model():
 	print(pd.DataFrame(y).head())
 
 
-	### Train / Test Split
+	# Train / Test Split
 
 	x_train, x_test, y_train, y_test = train_test_split(x, y, test_size=0.3, random_state=random)
 
@@ -222,7 +223,7 @@ def train_model():
 	    y_test = np_utils.to_categorical(y_test)     
 	    y_train = np_utils.to_categorical(y_train) 
 
-	### Displaying Train / Test Proportions
+	# Displaying Train / Test Proportions
 
 	print("\nTrain / Test Split\n")
 
@@ -249,7 +250,7 @@ def train_model():
 	    print("1 predicted/response/dependent variable\n")
 
 
-	### Model Fit
+	# Model Fit
 
 	if choice == 5: # XGBClassifier
 	    x_train = x_train.values
@@ -266,16 +267,16 @@ def train_model():
 	    print("\nModel Fitted")
 	    
 	    history.history.keys()
-	    rcParams['figure.figsize'] = 20, 6
+	    rcParams["figure.figsize"] = 20, 6
 	    plt.figure(1)
-	    plt.subplot(1,2,1).set_title('\nval_loss\n', fontsize=20)
+	    plt.subplot(1,2,1).set_title("\nval_loss\n", fontsize=20)
 	    plt.plot(history.history["val_loss"])
-	    plt.xlabel('\nIterations\n', fontsize=15)
-	    plt.ylabel('\nVal Loss\n', fontsize=15)
-	    plt.subplot(1,2,2).set_title('\nval_acc\n', fontsize=20)
+	    plt.xlabel("\nIterations\n", fontsize=15)
+	    plt.ylabel("\nVal Loss\n", fontsize=15)
+	    plt.subplot(1,2,2).set_title("\nval_acc\n", fontsize=20)
 	    plt.plot(history.history["val_acc"])
-	    plt.xlabel('\nIterations\n', fontsize=15)
-	    plt.ylabel('\nVal Acc\n', fontsize=15)
+	    plt.xlabel("\nIterations\n", fontsize=15)
+	    plt.ylabel("\nVal Acc\n", fontsize=15)
 	    plt.grid(alpha=0.5)
 	    plt.yticks(fontsize=12)
 	    plt.tight_layout()
@@ -288,7 +289,7 @@ def train_model():
 	pickle.dump(model, open("results/model"+str(choice)+".sav", "wb"))
 
 
-	### Test Prediction
+	# Test Prediction
 
 	pred_y_test = model.predict(x_test)
 	print("\nTest Predicted")
@@ -303,7 +304,7 @@ def train_model():
 	    print(pred_y_test_un[0:30])
 
 
-	### Test Prediction Probabilities
+	# Test Prediction Probabilities
 
 	if choice != 6: # Not a Neural Network
 	    probability = model.predict_proba(x_test) 
@@ -315,7 +316,7 @@ def train_model():
 	print(pd.DataFrame(probability.round(4)).head())
 
 
-	### Accuracy Score
+	# Accuracy Score
 
 	if choice != 6: # Not a Neural Network
 	    score = accuracy_score(y_test, pred_y_test)
@@ -326,7 +327,7 @@ def train_model():
 	print("\nAccuracy Score: ", score)
 
 
-	### Simple Confusion Matrix
+	# Simple Confusion Matrix
 
 	if choice != 6: # Not a Neural Network
 	    matrix = confusion_matrix(y_test, pred_y_test)
@@ -338,11 +339,11 @@ def train_model():
 	print(pd.DataFrame(matrix))
 
 
-	### Confusion Matrix Plot
+	# Confusion Matrix Plot
 
 	if choice != 6: # Not a Neural Network
 	    matrix_plot = ConfusionMatrix(model)
-	    rcParams['figure.figsize'] = 5, 5
+	    rcParams["figure.figsize"] = 5, 5
 	    matrix_plot.fit(x_train, y_train)
 	    matrix_plot.score(x_test, y_test)
 	    matrix_plot.poof(outpath="results/matrix.png", dpi=300) # Only if you want to save the plot as an image
@@ -354,7 +355,7 @@ def train_model():
 	    pass
 
 
-	### Variables Importances
+	# Variables Importances
 
 	forest = ExtraTreesClassifier(n_estimators=1000, random_state=random)
 	forest.fit(x_train, y_train)
@@ -368,23 +369,23 @@ def train_model():
 	print(pd.DataFrame(sorted_importances.values, columns=["Variable", "Importance"]))
 
 
-	### Variables Importances Plot
+	# Variables Importances Plot
 
-	plt.rcParams['figure.figsize'] = 12, 10
+	plt.rcParams["figure.figsize"] = 12, 10
 	plt.scatter(sorted_importances[1], sorted_importances[0])
-	plt.title('\nImportances\n', fontsize=20)
-	plt.xlabel('\nImportance (0~1)\n', fontsize=15)
-	plt.ylabel('\nVariable\n', fontsize=15)
+	plt.title("\nImportances\n", fontsize=20)
+	plt.xlabel("\nImportance (0~1)\n", fontsize=15)
+	plt.ylabel("\nVariable\n", fontsize=15)
 	plt.grid(alpha=0.5)
 	plt.yticks(fontsize=13)
 	plt.tight_layout()
-	plt.savefig('results/importances.png', format='png', dpi = 300, bbox_inches='tight') # Only if you want to save the plot as an image
+	plt.savefig("results/importances.png", format="png", dpi = 300, bbox_inches="tight") # Only if you want to save the plot as an image
 	plt.show()
 
 	print("\nImage <importances.png> saved.\n")
 
 
-	### Exporting Importances
+	# Exporting Importances
 
 	lista = []
 
@@ -393,13 +394,13 @@ def train_model():
 	    lista.append(str(round(importances[index]*100,2)) + "% | " + str(i))
 	    index += 1
 
-	file = open('results/importances.csv', 'w')
+	file = open("results/importances.csv", "w")
 
-	file.write('Importance|Variable\n')
+	file.write("Importance|Variable\n")
 
 	index = 0
 	while index < len(labels):
-	    file.write(str(lista[index])+'\n')
+	    file.write(str(lista[index])+"\n")
 	    index += 1
 
 	file.close()
@@ -407,21 +408,21 @@ def train_model():
 	print("\nFile <importances.csv> saved.\n")
 
 
-	### Exporting Predictions
+	# Exporting Predictions
 
-	file = open('results/predictions.csv', 'w')
+	file = open("results/predictions.csv", "w")
 
-	file.write('Key|x_test|y_test|pred_y_test|Probability\n')
+	file.write("Key|x_test|y_test|pred_y_test|Probability\n")
 
 	index = 0
 
 	while index < len(pred_y_test):
 
 	    if choice != 6: # Not a Neural Network
-	        file.write(str(index) + '|' + str(np.array(x_test)[index]) + '|' + str(np.array(y_test)[index]) + '|' + str(np.array(pred_y_test)[index]) + '|' + str(round(probability[index][1], 4)).replace(".", ",") + '\n')
+	        file.write(str(index) + "|" + str(np.array(x_test)[index]) + "|" + str(np.array(y_test)[index]) + "|" + str(np.array(pred_y_test)[index]) + "|" + str(round(probability[index][1], 4)).replace(".", ",") + "\n")
 	        
 	    if choice == 6: # Neural Network
-	        file.write(str(index) + '|' + str(np.array(x_test)[index]) + '|' + str(np.array(y_test_un)[index]) + '|' + str(np.array(pred_y_test_un)[index]) + '|' + str(round(probability[index][1], 4)).replace(".", ",") + '\n')
+	        file.write(str(index) + "|" + str(np.array(x_test)[index]) + "|" + str(np.array(y_test_un)[index]) + "|" + str(np.array(pred_y_test_un)[index]) + "|" + str(round(probability[index][1], 4)).replace(".", ",") + "\n")
 	    
 	    index += 1
 	        
@@ -430,18 +431,18 @@ def train_model():
 	print("\nFile <predictions.csv> saved.\n")
 
     
-### Function: Predict new data
+# Function: Predict new data
 
 def predict_new():
 
     
-	### Importing New Dataset
+	# Importing New Dataset
 
 	model = pickle.load(open("results/model"+str(choice)+".sav", "rb"))
 	new_dataset = pd.read_csv("novocredit.csv", sep = ",")
     
         
-    ### Defining X
+    # Defining X
     
 	new_x = new_dataset
 	labels = [i for i in new_x.columns]
@@ -462,7 +463,7 @@ def predict_new():
 	print(pd.DataFrame(new_x).head())
     
         
-    ### New Prediction
+    # New Prediction
 
 	if choice == 5: # XGBClassifier
 	    new_x = new_x.values
@@ -479,7 +480,7 @@ def predict_new():
 	    print(pred_new_y_un[0:30])
 
 
-	### New Prediction Probabilities
+	# New Prediction Probabilities
 
 	if choice != 6: # Not a Neural Network
 	    new_probability = model.predict_proba(new_x) 
@@ -491,23 +492,23 @@ def predict_new():
 	print(pd.DataFrame(new_probability.round(4)).head())
 
 
-	### Exporting Predictions
+	# Exporting Predictions
 
 	nome_arquivo = str(input("\nDigite o nome do arquivo onde serão salvas as predições: "))+".csv"
 
 	file = open("results/"+str(nome_arquivo), "w")
 
-	file.write('Key|new_x|pred_new_y_un|Probability\n')
+	file.write("Key|new_x|pred_new_y_un|Probability\n")
 
 	index = 0
 
 	while index < len(pred_new_y):
 
 	    if choice != 6: # Not a Neural Network
-	        file.write(str(index) + '|' + str(np.array(new_x)[index]) + '|' + str(np.array(pred_new_y)[index]) + '|' + str(round(new_probability[index][1], 4)).replace(".", ",") + '\n')
+	        file.write(str(index) + "|" + str(np.array(new_x)[index]) + "|" + str(np.array(pred_new_y)[index]) + "|" + str(round(new_probability[index][1], 4)).replace(".", ",") + "\n")
 	        
 	    if choice == 6: # Neural Network
-	        file.write(str(index) + '|' + str(np.array(new_x)[index]) + '|' + str(np.array(pred_new_y_un)[index]) + '|' + str(round(new_probability[index][1], 4)).replace(".", ",") + '\n')
+	        file.write(str(index) + "|" + str(np.array(new_x)[index]) + "|" + str(np.array(pred_new_y_un)[index]) + "|" + str(round(new_probability[index][1], 4)).replace(".", ",") + "\n")
 	    
 	    index += 1
 	        
@@ -518,7 +519,7 @@ def predict_new():
 	input("\nPress ENTER to exit")
     
 
-### Running Functions
+# Running Functions
 
 try:
 	predict_new()
@@ -526,14 +527,16 @@ except:
 	train_model()
 	predict_new()
 
-    
-### *Leonardo Damasio* | **Data Scientist**
 
-#### LinkedIn
-##### www.linkedin.com/in/leonardodamasio
+# *Leonardo Damasio* | **Data Scientist**
 
-#### GitHub
-##### www.github.com/leonardodamasio/
+# LinkedIn
+# www.linkedin.com/in/leonardodamasio
+webbrowser.open("https://www.linkedin.com/in/leonardodamasio")
 
-#### Email
-##### leoleonardo1996@hotmail.com
+# GitHub
+# www.github.com/leonardodamasio/
+webbrowser.open("https://github.com/leonardodamasio")
+
+# Email
+# leoleonardo1996@hotmail.com
